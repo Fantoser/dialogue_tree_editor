@@ -1,0 +1,193 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Nodes/Text.gd" type="Script" id=1]
+
+[node name="Text node" type="GraphNode"]
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -1.0
+margin_right = -750.0
+margin_bottom = -77.0
+rect_min_size = Vector2( 275, 223 )
+size_flags_horizontal = 0
+size_flags_stretch_ratio = 0.0
+custom_constants/port_offset = 0
+title = "Text"
+show_close = true
+resizable = true
+slot/0/left_enabled = true
+slot/0/left_type = 0
+slot/0/left_color = Color( 1, 1, 1, 1 )
+slot/0/right_enabled = true
+slot/0/right_type = 0
+slot/0/right_color = Color( 1, 1, 1, 1 )
+script = ExtResource( 1 )
+
+[node name="HSplitContainer" type="HBoxContainer" parent="."]
+margin_left = 16.0
+margin_top = 24.0
+margin_right = 259.0
+margin_bottom = 215.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HSplitContainer"]
+margin_right = 216.0
+margin_bottom = 191.0
+size_flags_horizontal = 3
+
+[node name="Firstrepeat" type="HBoxContainer" parent="HSplitContainer/VBoxContainer"]
+margin_right = 216.0
+margin_bottom = 24.0
+
+[node name="First" type="HBoxContainer" parent="HSplitContainer/VBoxContainer/Firstrepeat"]
+editor/display_folded = true
+margin_right = 106.0
+margin_bottom = 24.0
+size_flags_horizontal = 3
+
+[node name="First label" type="Label" parent="HSplitContainer/VBoxContainer/Firstrepeat/First"]
+margin_top = 5.0
+margin_right = 28.0
+margin_bottom = 19.0
+text = "First"
+
+[node name="First checkbox" type="CheckBox" parent="HSplitContainer/VBoxContainer/Firstrepeat/First"]
+margin_left = 32.0
+margin_right = 56.0
+margin_bottom = 24.0
+focus_mode = 0
+enabled_focus_mode = 0
+
+[node name="Repeat" type="HBoxContainer" parent="HSplitContainer/VBoxContainer/Firstrepeat"]
+editor/display_folded = true
+margin_left = 110.0
+margin_right = 216.0
+margin_bottom = 24.0
+size_flags_horizontal = 3
+
+[node name="Repeat label" type="Label" parent="HSplitContainer/VBoxContainer/Firstrepeat/Repeat"]
+margin_top = 5.0
+margin_right = 44.0
+margin_bottom = 19.0
+text = "Repeat"
+
+[node name="Repeat checkbox" type="CheckBox" parent="HSplitContainer/VBoxContainer/Firstrepeat/Repeat"]
+margin_left = 48.0
+margin_right = 72.0
+margin_bottom = 24.0
+focus_mode = 0
+enabled_focus_mode = 0
+
+[node name="All" type="VBoxContainer" parent="HSplitContainer/VBoxContainer"]
+margin_top = 28.0
+margin_right = 216.0
+margin_bottom = 188.0
+
+[node name="Separator" type="HSeparator" parent="HSplitContainer/VBoxContainer/All"]
+margin_right = 216.0
+margin_bottom = 4.0
+
+[node name="ID label" type="Label" parent="HSplitContainer/VBoxContainer/All"]
+margin_top = 8.0
+margin_right = 216.0
+margin_bottom = 22.0
+text = "ID"
+
+[node name="ID text" type="TextEdit" parent="HSplitContainer/VBoxContainer/All"]
+margin_top = 26.0
+margin_right = 216.0
+margin_bottom = 56.0
+rect_min_size = Vector2( 0, 30 )
+
+[node name="Name label" type="Label" parent="HSplitContainer/VBoxContainer/All"]
+margin_top = 60.0
+margin_right = 216.0
+margin_bottom = 74.0
+text = "Name"
+
+[node name="Name text" type="OptionButton" parent="HSplitContainer/VBoxContainer/All"]
+margin_top = 78.0
+margin_right = 216.0
+margin_bottom = 108.0
+rect_min_size = Vector2( 0, 30 )
+focus_mode = 0
+enabled_focus_mode = 0
+
+[node name="Text label" type="Label" parent="HSplitContainer/VBoxContainer/All"]
+margin_top = 112.0
+margin_right = 216.0
+margin_bottom = 126.0
+text = "Text"
+
+[node name="Text text" type="TextEdit" parent="HSplitContainer/VBoxContainer/All"]
+margin_top = 130.0
+margin_right = 216.0
+margin_bottom = 160.0
+rect_min_size = Vector2( 0, 30 )
+size_flags_vertical = 3
+wrap_enabled = true
+
+[node name="Buttons" type="VBoxContainer" parent="HSplitContainer"]
+margin_left = 220.0
+margin_right = 243.0
+margin_bottom = 191.0
+
+[node name="Text" type="Button" parent="HSplitContainer/Buttons"]
+margin_right = 23.0
+margin_bottom = 35.0
+rect_min_size = Vector2( 0, 35 )
+focus_mode = 0
+size_flags_horizontal = 3
+shortcut_in_tooltip = false
+enabled_focus_mode = 0
+text = "T"
+
+[node name="Divert" type="Button" parent="HSplitContainer/Buttons"]
+margin_top = 39.0
+margin_right = 23.0
+margin_bottom = 74.0
+rect_min_size = Vector2( 0, 35 )
+focus_mode = 0
+size_flags_horizontal = 3
+enabled_focus_mode = 0
+text = "D"
+
+[node name="Question" type="Button" parent="HSplitContainer/Buttons"]
+margin_top = 78.0
+margin_right = 23.0
+margin_bottom = 113.0
+rect_min_size = Vector2( 0, 35 )
+focus_mode = 0
+size_flags_horizontal = 3
+enabled_focus_mode = 0
+text = "Q"
+
+[node name="Action" type="Button" parent="HSplitContainer/Buttons"]
+margin_top = 117.0
+margin_right = 23.0
+margin_bottom = 152.0
+rect_min_size = Vector2( 0, 35 )
+focus_mode = 0
+size_flags_horizontal = 3
+enabled_focus_mode = 0
+text = "A"
+
+[node name="Random" type="Button" parent="HSplitContainer/Buttons"]
+margin_top = 156.0
+margin_right = 23.0
+margin_bottom = 191.0
+rect_min_size = Vector2( 0, 35 )
+focus_mode = 0
+size_flags_horizontal = 3
+enabled_focus_mode = 0
+text = "R"
+
+[connection signal="close_request" from="." to="." method="_on_Text_node_close_request"]
+[connection signal="resize_request" from="." to="." method="_on_Text_node_resize_request"]
+[connection signal="resized" from="." to="." method="_on_Text_node_resized"]
+[connection signal="pressed" from="HSplitContainer/VBoxContainer/Firstrepeat/First/First checkbox" to="." method="_on_First_checkbox_pressed"]
+[connection signal="pressed" from="HSplitContainer/VBoxContainer/Firstrepeat/Repeat/Repeat checkbox" to="." method="_on_Repeat_checkBox_pressed"]
+[connection signal="text_changed" from="HSplitContainer/VBoxContainer/All/ID text" to="." method="_on_ID_text_text_changed"]
+[connection signal="item_focused" from="HSplitContainer/VBoxContainer/All/Name text" to="." method="_on_Name_text_item_focused"]
+[connection signal="item_selected" from="HSplitContainer/VBoxContainer/All/Name text" to="." method="_on_Name_text_item_selected"]
+[connection signal="text_changed" from="HSplitContainer/VBoxContainer/All/Text text" to="." method="_on_Text_text_text_changed"]
+[connection signal="pressed" from="HSplitContainer/Buttons/Text" to="." method="_on_Text_pressed"]
