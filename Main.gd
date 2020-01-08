@@ -19,34 +19,36 @@ var theNameList = []
 onready var nameInput = $"VBoxContainer3/TextEdit"
 onready var nameList = $"VBoxContainer3/NameList"
 
-func _ready():
-	pass # Replace with function body.
 
 func _process(delta):
 	if Input.is_action_just_pressed("button1"):
 		print($GraphEdit.get_connection_list())
-#	if Input.is_action_just_pressed("button2"):
-#		$GraphEdit.connect_node("Text node", 0, "@Text node@43", 0)
+
 
 func _on_Text_node_pressed():
 	node = text_node.instance()
 	add_node(node)
 
+
 func _on_Divert_node_pressed():
 	node = divert_node.instance()
 	add_node(node)
+
 
 func _on_Question_node_pressed():
 	node = question_node.instance()
 	add_node(node)
 
+
 func _on_Action_node_pressed():
 	node = action_node.instance()
 	add_node(node)
 
+
 func _on_Random_node_pressed():
 	node = random_node.instance()
 	add_node(node)
+
 
 func add_node(node):
 	node.node_id = node_index
@@ -59,14 +61,18 @@ func add_node(node):
 	node_index += 1
 	node_offset += 1
 
+
 func _on_GraphEdit_connection_request(from, from_slot, to, to_slot):
 	$GraphEdit.connect_node(from, from_slot, to, to_slot)
+
 
 func _on_GraphEdit_disconnection_request(from, from_slot, to, to_slot):
 	$GraphEdit.disconnect_node(from, from_slot, to, to_slot)
 
+
 func _on_GraphEdit_scroll_offset_changed(ofs):
 	node_offset = 0
+
 
 func _on_Save_pressed():
 	mode = "save"
@@ -173,8 +179,6 @@ func _on_Export_pressed():
 		file.close()
 	else:
 		print("ERROR")
-#	print(connectlist)
-#	print(dialogue)
 
 
 func write_dialogue(connectlist):
@@ -284,7 +288,8 @@ func _on_New_pressed():
 	node_offset = 0
 	dialogue = {}
 	save_file = null
-	
+
+
 func _create_and_connect(from_node, type):
 	match type:
 		"text":
@@ -307,6 +312,7 @@ func _create_and_connect(from_node, type):
 	$GraphEdit.connect_node(from_node.name , 0, node.name, 0)
 	node_index += 1
 
+
 func _on_Add_pressed():
 	nameList.add_item(nameInput.text)
 	theNameList.append(nameInput.text)
@@ -326,20 +332,24 @@ func _on_Remove_pressed():
 		_remove_nodes_namelist(nameList.get_selected_items()[0])
 		nameList.remove_item(nameList.get_selected_items()[0])
 
+
 func _add_nodes_namelist(name):
 	for node in $GraphEdit.get_children():
 		if node is GraphNode and node.Type != "divert":
 			node._add_name(name)
+
 
 func _edit_nodes_namelist(id, to):
 	for node in $GraphEdit.get_children():
 		if node is GraphNode and node.Type != "divert":
 			node._edit_name(id, to)
 
+
 func _remove_nodes_namelist(id):
 	for node in $GraphEdit.get_children():
 		if node is GraphNode and node.Type != "divert":
 			node._remove_name(id)
+
 
 func _load_namelist(node):
 	for i in range(nameList.get_item_count()):

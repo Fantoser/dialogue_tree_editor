@@ -13,17 +13,15 @@ var const_size = null
 
 onready var nameList = $"All/Name text"
 
-# Called when the node enters the scene tree for the first time.
+
 func _ready():
 	real_id = node_id
 	_on_Add_pressed()
 	const_size = rect_min_size
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	rect_size = const_size
-#	$TextEdit.rect_size[1] = self.rect_size[1]-50
 
 
 func loading(node):
@@ -43,6 +41,7 @@ func loading(node):
 		textbar.text = node["options"][i]
 		Options[i] = node["options"][i]
 
+
 func _on_Question_node_close_request():
 	queue_free()
 
@@ -54,6 +53,7 @@ func _on_Question_node_resize_request(new_minsize):
 
 func _on_Question_node_resized():
 	$"All".rect_min_size.y = self.get_rect().size.y - all_miny
+
 
 func _on_Add_pressed():
 
@@ -86,11 +86,14 @@ func _on_Remove_pressed():
 		self.get_child(get_child_count()-1).queue_free()
 		slots_count -= 1
 
+
 func _option_Change(node, slot):
 	Options[slot] = node.text
 
+
 func _on_ID_text_text_changed():
 	node_id = $"All/ID text".text
+
 
 func _on_Name_text_text_changed():
 	Name = $"All/Name text".text
@@ -107,6 +110,7 @@ func _on_First_checkbox_pressed():
 	else:
 		node_id = real_id
 
+
 func _on_Repeat_checkBox_pressed():
 	if $"Firstrepeat/Repeat/Repeat checkbox".pressed == true:
 		$"Firstrepeat/First/First checkbox".pressed = false
@@ -114,11 +118,14 @@ func _on_Repeat_checkBox_pressed():
 	else:
 		node_id = real_id
 
+
 func _add_name(name):
 	nameList.add_item(name)
 
+
 func _edit_name(id, to):
 	nameList.set_item_text(id, to)
+
 
 func _remove_name(id):
 		nameList.remove_item(id)

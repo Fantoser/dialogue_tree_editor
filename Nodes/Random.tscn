@@ -144,7 +144,6 @@ margin_right = 259.0
 margin_bottom = 213.0
 
 [node name="Button container" type="HBoxContainer" parent="."]
-editor/display_folded = true
 margin_left = 16.0
 margin_top = 214.0
 margin_right = 259.0
@@ -154,14 +153,18 @@ rect_min_size = Vector2( 0, 25.07 )
 [node name="Remove" type="Button" parent="Button container"]
 margin_right = 119.0
 margin_bottom = 25.0
+focus_mode = 0
 size_flags_horizontal = 3
+enabled_focus_mode = 0
 text = "-"
 
 [node name="Add" type="Button" parent="Button container"]
 margin_left = 123.0
 margin_right = 243.0
 margin_bottom = 25.0
+focus_mode = 0
 size_flags_horizontal = 3
+enabled_focus_mode = 0
 text = "+"
 
 [node name="HSeparator2" type="HSeparator" parent="."]
