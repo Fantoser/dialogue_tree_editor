@@ -37,8 +37,9 @@ func loading(node):
 		Name = node["name"]
 
 	if node.has("content"):
-		$"All/Text text".text = node["content"]
-		Text = node["content"]
+		pass
+#		$"All/Text text".text = node["content"]
+#		Text = node["content"]
 
 
 func _on_Text_node_close_request():

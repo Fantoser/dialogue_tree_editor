@@ -15,6 +15,7 @@ var save_file
 var export_file
 var mode = ""
 var theNameList = []
+var firstNode = ""
 
 onready var nameInput = $"VBoxContainer3/TextEdit"
 onready var nameList = $"VBoxContainer3/NameList"
@@ -22,7 +23,11 @@ onready var nameList = $"VBoxContainer3/NameList"
 
 func _process(delta):
 	if Input.is_action_just_pressed("button1"):
-		print($GraphEdit.get_connection_list())
+#		print($GraphEdit.get_connection_list())
+		for k in $GraphEdit.get_children():
+			if k is GraphNode:
+				print(str(k.real_id) + " | " + str(k.node_id))
+		print("__________")
 
 
 func _on_Text_node_pressed():
@@ -129,6 +134,8 @@ func _on_Load_pressed():
 							node = random_node.instance()
 					add_node(node)
 					node.node_id = i
+					if firstNode == "":
+						firstNode = i
 					if dialogue[i].has("real_id"):
 						node.title = String(node.real_id) + " " + node.title
 						if i == "first":
@@ -140,22 +147,38 @@ func _on_Load_pressed():
 					if int(i) > node_index:
 						node_index = int(i)+1
 					node.loading(dialogue[i])
-					node.offset = Vector2(dialogue[i]["offsetx"], dialogue[i]["offsety"])
+					if dialogue.has("connectlist"):
+						node.offset = Vector2(dialogue[i]["offsetx"], dialogue[i]["offsety"])
 
-			for i in range(0, dialogue["connectlist"].size()):
-				var from = null
-				var to = null
-				for k in $GraphEdit.get_children():
-					if k is GraphNode:
-						if k.node_id == String(dialogue["connectlist"][i]["from"]):
-							from = k.name
-						if k.node_id == String(dialogue["connectlist"][i]["to"]):
-							to = k.name
-				var from_port = dialogue["connectlist"][i]["from_port"]
-				var to_port = dialogue["connectlist"][i]["to_port"]
-				$GraphEdit.connect_node(from, from_port, to, to_port)
+			if dialogue.has("connectlist"):
+				for i in range(0, dialogue["connectlist"].size()):
+					var from = null
+					var to = null
+					for k in $GraphEdit.get_children():
+						if k is GraphNode:
+							if k.node_id == String(dialogue["connectlist"][i]["from"]):
+								from = k.name
+							if k.node_id == String(dialogue["connectlist"][i]["to"]):
+								to = k.name
+					var from_port = dialogue["connectlist"][i]["from_port"]
+					var to_port = dialogue["connectlist"][i]["to_port"]
+					$GraphEdit.connect_node(from, from_port, to, to_port)
+			else:
+				_connect_Nodes()
 	mode = null
 
+func _connect_Nodes():
+	var placed = []
+	var offset = $GraphEdit.get_scroll_ofs() + ($GraphEdit.rect_size/3)
+	var from_node
+	var to_node
+	for node in $GraphEdit.get_children():
+		if node is GraphNode:
+			if node.node_id == firstNode:
+				from_node = node
+			if node.node_id == dialogue[firstNode].next:
+				to_node = node
+	$GraphEdit.connect_node(from_node.name, 0, to_node.name, 0)
 
 func _on_Export_pressed():
 	mode = "export"
@@ -206,8 +229,6 @@ func write_dialogue(connectlist):
 		if i+1 == connectlist.size() or node.Type == "divert" or node.Type == "question" or node.Type == "random":
 			dialogue[to_node.node_id] = {}
 			node_read(to_node)
-			if node.Type == "random" and connectlist[i].from_port+1 == node.get_connection_output_count() and mode == "export":
-				dialogue[node.node_id]["type"] = "action"
 
 	for node in $GraphEdit.get_children():
 		if node is GraphNode:
@@ -279,11 +300,14 @@ func node_read(node, from_port = null, to_node = null):
 				if mode == "save":
 					dialogue[node.node_id]["slots_count"] = node.slots_count-4
 
+	if mode == "export" and node.Type == "random":
+		dialogue[node.node_id]["type"] = "action"
+
 
 func _on_New_pressed():
-	for k in $GraphEdit.get_children():
-		if k is GraphNode:
-			k.queue_free()
+	for element in $GraphEdit.get_children():
+		if element is GraphNode:
+			element.queue_free()
 	node_index = 0
 	node_offset = 0
 	dialogue = {}
@@ -302,11 +326,11 @@ func _create_and_connect(from_node, type):
 			node = action_node.instance()
 		"random":
 			node = random_node.instance()
-			
+
+	node.node_id = node_index
 	$GraphEdit.add_child(node)
 	if node.Type != "divert":
 		_load_namelist(node)
-	node.node_id = node_index
 	node.title = str(node_index) + " " + node.title
 	node.offset = from_node.offset + Vector2(350, 0)
 	$GraphEdit.connect_node(from_node.name , 0, node.name, 0)
