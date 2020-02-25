@@ -1,10 +1,15 @@
 extends Control
-
+	#var applicationName = ProjectSettings.get("application/config/name")
+	#print(applicationName)
+	#applicationName = ProjectSettings.get("application/config/name") + "Unsaved"
+	#print(applicationName)
+	#ProjectSettings.set("application/config/name", applicationName)
 var text_node = load("res://Nodes/Text.tscn")
 var divert_node = load("res://Nodes/Divert.tscn")
 var question_node = load("res://Nodes/Question.tscn")
 var action_node = load("res://Nodes/Action.tscn")
 var random_node = load("res://Nodes/Random.tscn")
+const savebar_object = preload("res://Objects/SaveBar.tscn")
 var initial_position = Vector2(50, 50)
 var node = null
 var node_index = 0
@@ -66,7 +71,6 @@ func add_node(node):
 	node_index += 1
 	node_offset += 1
 
-
 func _on_GraphEdit_connection_request(from, from_slot, to, to_slot):
 	$GraphEdit.connect_node(from, from_slot, to, to_slot)
 
@@ -80,6 +84,7 @@ func _on_GraphEdit_scroll_offset_changed(ofs):
 
 
 func _on_Save_pressed():
+	
 	mode = "save"
 	var connectlist = $GraphEdit.get_connection_list()
 	var file = File.new()
@@ -95,6 +100,7 @@ func _on_Save_pressed():
 		save_file = yield(selector,"file_selected")
 		print(selector.current_dir)
 	if file.open(save_file, file.WRITE) == OK:
+		
 		write_dialogue(connectlist)
 		dialogue["connectlist"] = connectlist
 		for i in range(0, dialogue["connectlist"].size()):
@@ -102,6 +108,7 @@ func _on_Save_pressed():
 			dialogue["connectlist"][i]["to"] = $GraphEdit.get_node(connectlist[i]["to"]).node_id
 		file.store_string(JSON.print(dialogue))
 		file.close()
+		add_savebar()
 	else:
 		print("ERROR")
 
@@ -379,3 +386,11 @@ func _load_namelist(node):
 	for i in range(nameList.get_item_count()):
 		node._add_name(nameList.get_item_text(i))
 		node.Name = nameList.get_item_text(0)
+
+func add_savebar(): # the saving bar that gets plopped in when something is saved
+	var savebar = savebar_object.instance()
+	get_parent().add_child(savebar)
+	var screenSize = Vector2(0,0)
+	screenSize.x = (get_viewport().get_visible_rect().size.x / 2) - (340 / 2)# Get Width
+	screenSize.y = (get_viewport().get_visible_rect().size.y / 2) - (100 / 2)# Get Height
+	savebar.set_position(screenSize)

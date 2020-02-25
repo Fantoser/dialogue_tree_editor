@@ -18,7 +18,6 @@ margin_left = 123.0
 right_disconnects = true
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="."]
-editor/display_folded = true
 margin_left = 9.0
 margin_top = 17.8699
 margin_right = 115.0
@@ -30,6 +29,7 @@ __meta__ = {
 [node name="New" type="Button" parent="VBoxContainer2"]
 margin_right = 106.0
 margin_bottom = 20.0
+hint_tooltip = "Removes all the nodes that is currently in your editor."
 focus_mode = 0
 enabled_focus_mode = 0
 text = "NEW"
@@ -45,6 +45,7 @@ margin_bottom = 28.0
 margin_top = 32.0
 margin_right = 106.0
 margin_bottom = 52.0
+hint_tooltip = "Saves the current nodes as a JSON file, that is also loadable."
 focus_mode = 0
 enabled_focus_mode = 0
 text = "SAVE"
@@ -60,6 +61,7 @@ margin_bottom = 60.0
 margin_top = 64.0
 margin_right = 106.0
 margin_bottom = 84.0
+hint_tooltip = "Loads a saved JSON file, provided it was saved through this editor."
 focus_mode = 0
 enabled_focus_mode = 0
 text = "LOAD"
@@ -75,12 +77,12 @@ margin_bottom = 92.0
 margin_top = 96.0
 margin_right = 106.0
 margin_bottom = 116.0
+hint_tooltip = "Exports the JSON file as a clean file. frees up some extra bytes, but dissallows it to be loaded in this editor."
 focus_mode = 0
 enabled_focus_mode = 0
 text = "EXPORT"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
-editor/display_folded = true
 margin_left = 7.0
 margin_top = 155.785
 margin_right = 114.0
@@ -92,6 +94,8 @@ __meta__ = {
 [node name="Text node" type="Button" parent="VBoxContainer"]
 margin_right = 107.0
 margin_bottom = 20.0
+hint_tooltip = "Adds a simple Text node.
+It takes A name, text and a new ID."
 focus_mode = 0
 enabled_focus_mode = 0
 text = "Text node"
@@ -122,6 +126,8 @@ margin_bottom = 60.0
 margin_top = 64.0
 margin_right = 107.0
 margin_bottom = 84.0
+hint_tooltip = "Adds a Question node.
+It takes A name, text and a new ID. You can add extra clickable options."
 focus_mode = 0
 enabled_focus_mode = 0
 text = "Question node"
@@ -137,6 +143,8 @@ margin_bottom = 92.0
 margin_top = 96.0
 margin_right = 107.0
 margin_bottom = 116.0
+hint_tooltip = "Adds a Action node.
+It takes A name, text and a new ID."
 focus_mode = 0
 enabled_focus_mode = 0
 text = "Action node"
@@ -152,6 +160,8 @@ margin_bottom = 124.0
 margin_top = 128.0
 margin_right = 107.0
 margin_bottom = 148.0
+hint_tooltip = "Adds a Random node.
+It takes A name, text and a new ID. Ontop of that you can add in extra connection lines to where it randomly goes toward."
 focus_mode = 0
 enabled_focus_mode = 0
 text = "Random node"
@@ -166,6 +176,7 @@ margin_bottom = 588.0
 margin_right = 103.0
 margin_bottom = 30.38
 rect_min_size = Vector2( 0, 30.38 )
+hint_tooltip = "Type in a name here, this is to alter the name list."
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer3"]
 margin_top = 34.0
@@ -175,6 +186,7 @@ margin_bottom = 54.0
 [node name="Button" type="Button" parent="VBoxContainer3/HBoxContainer"]
 margin_right = 27.0
 margin_bottom = 20.0
+hint_tooltip = "Adds the typed in name to the namelist"
 focus_mode = 0
 size_flags_horizontal = 3
 enabled_focus_mode = 0
@@ -184,6 +196,7 @@ text = "+"
 margin_left = 31.0
 margin_right = 72.0
 margin_bottom = 20.0
+hint_tooltip = "Edits a currently selected name to change to what was typed to above"
 focus_mode = 0
 size_flags_horizontal = 3
 enabled_focus_mode = 0
@@ -193,6 +206,7 @@ text = "EDIT"
 margin_left = 76.0
 margin_right = 103.0
 margin_bottom = 20.0
+hint_tooltip = "Removes a selected name from the name list."
 focus_mode = 0
 size_flags_horizontal = 3
 enabled_focus_mode = 0
@@ -203,7 +217,6 @@ margin_top = 58.0
 margin_right = 103.0
 margin_bottom = 221.0
 size_flags_vertical = 3
-
 [connection signal="connection_request" from="GraphEdit" to="." method="_on_GraphEdit_connection_request"]
 [connection signal="disconnection_request" from="GraphEdit" to="." method="_on_GraphEdit_disconnection_request"]
 [connection signal="scroll_offset_changed" from="GraphEdit" to="." method="_on_GraphEdit_scroll_offset_changed"]
