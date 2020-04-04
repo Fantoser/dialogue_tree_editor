@@ -303,7 +303,7 @@ func node_read(node, from_port = null, to_node = null):
 				if from_port == 1:
 					dialogue[node.node_id]["false"] = to_node.node_id
 			"question", "random":
-				dialogue[node.node_id][next_value][from_port] = to_node.node_id
+				dialogue[node.node_id][next_value][from_port] = String(to_node.node_id)
 				if mode == "save":
 					dialogue[node.node_id]["slots_count"] = node.slots_count-4
 
