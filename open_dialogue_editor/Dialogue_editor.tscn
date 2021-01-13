@@ -1,0 +1,282 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://addons/open_dialogue_editor/Dialogue_editor.gd" type="Script" id=1]
+
+[node name="Dialogue editor" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_min_size = Vector2( 0, 385 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+margin_right = 81.0
+margin_bottom = 600.0
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="HSeparator2" type="HSeparator" parent="HBoxContainer/VBoxContainer"]
+modulate = Color( 1, 1, 1, 0 )
+show_behind_parent = true
+margin_right = 81.0
+margin_bottom = 4.0
+
+[node name="New" type="Button" parent="HBoxContainer/VBoxContainer"]
+margin_top = 8.0
+margin_right = 81.0
+margin_bottom = 28.0
+hint_tooltip = "Removes all the nodes that is currently in your editor."
+focus_mode = 0
+enabled_focus_mode = 0
+text = "NEW"
+
+[node name="Save" type="Button" parent="HBoxContainer/VBoxContainer"]
+margin_top = 32.0
+margin_right = 81.0
+margin_bottom = 52.0
+hint_tooltip = "Saves the current nodes as a JSON file, that is also loadable."
+focus_mode = 0
+enabled_focus_mode = 0
+text = "SAVE"
+
+[node name="Load" type="Button" parent="HBoxContainer/VBoxContainer"]
+margin_top = 56.0
+margin_right = 81.0
+margin_bottom = 76.0
+hint_tooltip = "Loads a saved JSON file, provided it was saved through this editor."
+focus_mode = 0
+enabled_focus_mode = 0
+text = "LOAD"
+
+[node name="Export" type="Button" parent="HBoxContainer/VBoxContainer"]
+margin_top = 80.0
+margin_right = 81.0
+margin_bottom = 100.0
+hint_tooltip = "Exports the JSON file as a clean file. frees up some extra bytes, but dissallows it to be loaded in this editor."
+focus_mode = 0
+enabled_focus_mode = 0
+text = "EXPORT"
+
+[node name="HSeparator" type="HSeparator" parent="HBoxContainer/VBoxContainer"]
+margin_top = 104.0
+margin_right = 81.0
+margin_bottom = 108.0
+
+[node name="Namelist_container" type="VBoxContainer" parent="HBoxContainer/VBoxContainer"]
+margin_top = 112.0
+margin_right = 81.0
+margin_bottom = 600.0
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextEdit" type="TextEdit" parent="HBoxContainer/VBoxContainer/Namelist_container"]
+margin_right = 81.0
+margin_bottom = 30.38
+rect_min_size = Vector2( 0, 30.38 )
+hint_tooltip = "Type in a name here, this is to alter the name list."
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/VBoxContainer/Namelist_container"]
+margin_top = 34.0
+margin_right = 81.0
+margin_bottom = 54.0
+
+[node name="Button" type="Button" parent="HBoxContainer/VBoxContainer/Namelist_container/HBoxContainer"]
+margin_right = 81.0
+margin_bottom = 20.0
+hint_tooltip = "Adds the typed in name to the namelist"
+focus_mode = 0
+size_flags_horizontal = 3
+enabled_focus_mode = 0
+text = "ADD"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="HBoxContainer/VBoxContainer/Namelist_container"]
+margin_top = 58.0
+margin_right = 81.0
+margin_bottom = 78.0
+
+[node name="Button3" type="Button" parent="HBoxContainer/VBoxContainer/Namelist_container/HBoxContainer2"]
+margin_right = 41.0
+margin_bottom = 20.0
+hint_tooltip = "Edits a currently selected name to change to what was typed to above"
+focus_mode = 0
+size_flags_horizontal = 3
+enabled_focus_mode = 0
+text = "EDIT"
+
+[node name="Button2" type="Button" parent="HBoxContainer/VBoxContainer/Namelist_container/HBoxContainer2"]
+margin_left = 45.0
+margin_right = 81.0
+margin_bottom = 20.0
+hint_tooltip = "Removes a selected name from the name list."
+focus_mode = 0
+size_flags_horizontal = 3
+enabled_focus_mode = 0
+text = "DEL"
+
+[node name="NameList" type="ItemList" parent="HBoxContainer/VBoxContainer/Namelist_container"]
+margin_top = 82.0
+margin_right = 81.0
+margin_bottom = 240.0
+rect_min_size = Vector2( 81, 158 )
+focus_mode = 0
+items = [ "", null, false ]
+
+[node name="VSeparator" type="VSeparator" parent="HBoxContainer"]
+margin_left = 85.0
+margin_right = 89.0
+margin_bottom = 600.0
+
+[node name="VBoxContainer4" type="VBoxContainer" parent="HBoxContainer"]
+margin_left = 93.0
+margin_right = 1024.0
+margin_bottom = 600.0
+size_flags_horizontal = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/VBoxContainer4"]
+margin_right = 931.0
+margin_bottom = 20.0
+
+[node name="Text node" type="Button" parent="HBoxContainer/VBoxContainer4/HBoxContainer"]
+margin_right = 67.0
+margin_bottom = 20.0
+hint_tooltip = "Adds a simple Text node.
+It takes A name, text and a new ID."
+focus_mode = 0
+enabled_focus_mode = 0
+text = "Text nod"
+
+[node name="VSeparator" type="VSeparator" parent="HBoxContainer/VBoxContainer4/HBoxContainer"]
+margin_left = 71.0
+margin_right = 75.0
+margin_bottom = 20.0
+
+[node name="Divert node" type="Button" parent="HBoxContainer/VBoxContainer4/HBoxContainer"]
+margin_left = 79.0
+margin_right = 166.0
+margin_bottom = 20.0
+focus_mode = 0
+enabled_focus_mode = 0
+text = "Divert node"
+
+[node name="VSeparator2" type="VSeparator" parent="HBoxContainer/VBoxContainer4/HBoxContainer"]
+margin_left = 170.0
+margin_right = 174.0
+margin_bottom = 20.0
+
+[node name="Question node" type="Button" parent="HBoxContainer/VBoxContainer4/HBoxContainer"]
+margin_left = 178.0
+margin_right = 285.0
+margin_bottom = 20.0
+hint_tooltip = "Adds a Question node.
+It takes A name, text and a new ID. You can add extra clickable options."
+focus_mode = 0
+enabled_focus_mode = 0
+text = "Question node"
+
+[node name="VSeparator3" type="VSeparator" parent="HBoxContainer/VBoxContainer4/HBoxContainer"]
+margin_left = 289.0
+margin_right = 293.0
+margin_bottom = 20.0
+
+[node name="Action node" type="Button" parent="HBoxContainer/VBoxContainer4/HBoxContainer"]
+margin_left = 297.0
+margin_right = 386.0
+margin_bottom = 20.0
+hint_tooltip = "Adds a Action node.
+It takes A name, text and a new ID."
+focus_mode = 0
+enabled_focus_mode = 0
+text = "Action node"
+
+[node name="VSeparator4" type="VSeparator" parent="HBoxContainer/VBoxContainer4/HBoxContainer"]
+margin_left = 390.0
+margin_right = 394.0
+margin_bottom = 20.0
+
+[node name="Random node" type="Button" parent="HBoxContainer/VBoxContainer4/HBoxContainer"]
+margin_left = 398.0
+margin_right = 498.0
+margin_bottom = 20.0
+hint_tooltip = "Adds a Random node.
+It takes A name, text and a new ID. Ontop of that you can add in extra connection lines to where it randomly goes toward."
+focus_mode = 0
+enabled_focus_mode = 0
+text = "Random node"
+
+[node name="Filename" type="Label" parent="HBoxContainer/VBoxContainer4/HBoxContainer"]
+margin_left = 502.0
+margin_top = 3.0
+margin_right = 588.0
+margin_bottom = 17.0
+text = "New dialogue"
+
+[node name="First repeat" type="HBoxContainer" parent="HBoxContainer/VBoxContainer4/HBoxContainer"]
+margin_left = 592.0
+margin_right = 931.0
+margin_bottom = 20.0
+size_flags_horizontal = 3
+alignment = 2
+
+[node name="First" type="Button" parent="HBoxContainer/VBoxContainer4/HBoxContainer/First repeat"]
+margin_left = 231.0
+margin_right = 271.0
+margin_bottom = 20.0
+focus_mode = 0
+text = "First"
+
+[node name="VSeparator7" type="VSeparator" parent="HBoxContainer/VBoxContainer4/HBoxContainer/First repeat"]
+margin_left = 275.0
+margin_right = 279.0
+margin_bottom = 20.0
+
+[node name="Repeat" type="Button" parent="HBoxContainer/VBoxContainer4/HBoxContainer/First repeat"]
+margin_left = 283.0
+margin_right = 339.0
+margin_bottom = 20.0
+focus_mode = 0
+text = "Repeat"
+
+[node name="GraphEdit" type="GraphEdit" parent="HBoxContainer/VBoxContainer4"]
+margin_top = 24.0
+margin_right = 931.0
+margin_bottom = 600.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+right_disconnects = true
+scroll_offset = Vector2( -25, -4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/New" to="." method="_on_New_pressed"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/Save" to="." method="_on_Save_pressed"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/Load" to="." method="_on_Load_pressed"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/Export" to="." method="_on_Export_pressed"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/Namelist_container/HBoxContainer/Button" to="." method="_on_Add_pressed"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/Namelist_container/HBoxContainer2/Button3" to="." method="_on_Edit_pressed"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/Namelist_container/HBoxContainer2/Button2" to="." method="_on_Remove_pressed"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer4/HBoxContainer/Text node" to="." method="_on_Text_node_pressed"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer4/HBoxContainer/Divert node" to="." method="_on_Divert_node_pressed"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer4/HBoxContainer/Question node" to="." method="_on_Question_node_pressed"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer4/HBoxContainer/Action node" to="." method="_on_Action_node_pressed"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer4/HBoxContainer/Random node" to="." method="_on_Random_node_pressed"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer4/HBoxContainer/First repeat/First" to="." method="_on_First_pressed"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer4/HBoxContainer/First repeat/Repeat" to="." method="_on_Repeat_pressed"]
+[connection signal="connection_request" from="HBoxContainer/VBoxContainer4/GraphEdit" to="." method="_on_GraphEdit_connection_request"]
+[connection signal="disconnection_request" from="HBoxContainer/VBoxContainer4/GraphEdit" to="." method="_on_GraphEdit_disconnection_request"]
+[connection signal="scroll_offset_changed" from="HBoxContainer/VBoxContainer4/GraphEdit" to="." method="_on_GraphEdit_scroll_offset_changed"]

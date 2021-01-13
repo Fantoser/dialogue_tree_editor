@@ -1,0 +1,25 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Objects/SaveBar.gd" type="Script" id=1]
+
+[node name="ProgressBar" type="ProgressBar"]
+margin_right = 340.0
+margin_bottom = 100.0
+max_value = 10.0
+step = 1.0
+script = ExtResource( 1 )
+
+[node name="Label" type="Label" parent="."]
+margin_left = 7.70013
+margin_top = 6.1601
+margin_right = 47.7001
+margin_bottom = 20.1601
+text = "Saving.."
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.01
+autostart = true
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

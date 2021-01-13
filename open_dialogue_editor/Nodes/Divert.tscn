@@ -1,0 +1,258 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://addons/open_dialogue_editor/Nodes/Divert.gd" type="Script" id=1]
+
+[node name="Divert node" type="GraphNode"]
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_right = -691.0
+margin_bottom = -20.0
+rect_min_size = Vector2( 275, 280 )
+size_flags_stretch_ratio = 0.0
+custom_constants/port_offset = 0
+title = "Divert"
+show_close = true
+slot/0/left_enabled = false
+slot/0/left_type = 0
+slot/0/left_color = Color( 1, 1, 1, 1 )
+slot/0/right_enabled = false
+slot/0/right_type = 0
+slot/0/right_color = Color( 1, 1, 1, 1 )
+slot/1/left_enabled = false
+slot/1/left_type = 0
+slot/1/left_color = Color( 1, 1, 1, 1 )
+slot/1/right_enabled = false
+slot/1/right_type = 0
+slot/1/right_color = Color( 1, 1, 1, 1 )
+slot/2/left_enabled = false
+slot/2/left_type = 0
+slot/2/left_color = Color( 1, 1, 1, 1 )
+slot/2/right_enabled = true
+slot/2/right_type = 0
+slot/2/right_color = Color( 0.67451, 0.933333, 0.580392, 1 )
+slot/3/left_enabled = false
+slot/3/left_type = 0
+slot/3/left_color = Color( 1, 1, 1, 1 )
+slot/3/right_enabled = true
+slot/3/right_type = 0
+slot/3/right_color = Color( 0.956863, 0.639216, 0.639216, 1 )
+slot/4/left_enabled = true
+slot/4/left_type = 0
+slot/4/left_color = Color( 1, 1, 1, 1 )
+slot/4/right_enabled = false
+slot/4/right_type = 0
+slot/4/right_color = Color( 1, 1, 1, 1 )
+slot/5/left_enabled = false
+slot/5/left_type = 0
+slot/5/left_color = Color( 1, 1, 1, 1 )
+slot/5/right_enabled = false
+slot/5/right_type = 0
+slot/5/right_color = Color( 1, 1, 1, 1 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="First flag" type="Control" parent="."]
+visible = false
+margin_left = 16.0
+margin_top = 24.0
+margin_right = 317.0
+margin_bottom = 24.0
+
+[node name="ColorRect" type="ColorRect" parent="First flag"]
+margin_left = -10.0
+margin_top = -45.0
+margin_right = 35.0
+margin_bottom = -25.0
+color = Color( 0.227451, 0.517647, 0.196078, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="First flag"]
+margin_left = -10.0
+margin_top = -50.0
+margin_right = 30.0
+margin_bottom = -36.0
+text = "FIRST"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Repeat flag" type="Control" parent="."]
+visible = false
+margin_left = 16.0
+margin_top = 25.0
+margin_right = 317.0
+margin_bottom = 25.0
+
+[node name="ColorRect2" type="ColorRect" parent="Repeat flag"]
+margin_left = -10.0
+margin_top = -46.0
+margin_right = 47.0
+margin_bottom = -26.0
+color = Color( 0.517647, 0.431373, 0.196078, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="Repeat flag"]
+margin_left = -10.0
+margin_top = -51.0
+margin_right = 30.0
+margin_bottom = -37.0
+text = "REPEAT"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="True container" type="HBoxContainer" parent="."]
+margin_left = 16.0
+margin_top = 26.0
+margin_right = 317.0
+margin_bottom = 57.01
+rect_min_size = Vector2( 0, 31.01 )
+alignment = 2
+
+[node name="True label" type="Label" parent="True container"]
+margin_left = 273.0
+margin_top = 8.0
+margin_right = 301.0
+margin_bottom = 22.0
+text = "True"
+align = 2
+
+[node name="False container" type="HBoxContainer" parent="."]
+margin_left = 16.0
+margin_top = 58.0
+margin_right = 317.0
+margin_bottom = 89.01
+rect_min_size = Vector2( 0, 31.01 )
+alignment = 2
+
+[node name="False label" type="Label" parent="False container"]
+margin_left = 268.0
+margin_top = 8.0
+margin_right = 301.0
+margin_bottom = 22.0
+text = "False"
+align = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+margin_left = 16.0
+margin_top = 90.0
+margin_right = 317.0
+margin_bottom = 120.0
+alignment = 2
+
+[node name="ID label" type="Label" parent="HBoxContainer"]
+margin_left = 2.0
+margin_top = 8.0
+margin_right = 65.0
+margin_bottom = 22.0
+text = "ID            "
+
+[node name="ID text" type="TextEdit" parent="HBoxContainer"]
+margin_left = 69.0
+margin_right = 301.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 232, 30 )
+
+[node name="All" type="VBoxContainer" parent="."]
+margin_left = 16.0
+margin_top = 121.0
+margin_right = 317.0
+margin_bottom = 256.0
+rect_min_size = Vector2( 0, 135 )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="All"]
+margin_right = 301.0
+margin_bottom = 30.0
+alignment = 2
+
+[node name="Condition label" type="Label" parent="All/HBoxContainer"]
+margin_top = 8.0
+margin_right = 65.0
+margin_bottom = 22.0
+text = "Condition "
+
+[node name="Condition" type="OptionButton" parent="All/HBoxContainer"]
+margin_left = 69.0
+margin_right = 301.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 232, 30 )
+focus_mode = 0
+text = "boolean"
+items = [ "boolean", null, false, 0, null, "equal", null, false, 1, null, "greater", null, false, 2, null, "less", null, false, 3, null, "range", null, false, 4, null, "boolean", null, false, 5, null, "equal", null, false, 6, null, "greater", null, false, 7, null, "less", null, false, 8, null, "range", null, false, 9, null, "boolean", null, false, 10, null, "equal", null, false, 11, null, "greater", null, false, 12, null, "less", null, false, 13, null, "range", null, false, 14, null, "boolean", null, false, 15, null, "equal", null, false, 16, null, "greater", null, false, 17, null, "less", null, false, 18, null, "range", null, false, 19, null, "boolean", null, false, 20, null, "equal", null, false, 21, null, "greater", null, false, 22, null, "less", null, false, 23, null, "range", null, false, 24, null, "boolean", null, false, 25, null, "equal", null, false, 26, null, "greater", null, false, 27, null, "less", null, false, 28, null, "range", null, false, 29, null, "boolean", null, false, 30, null, "equal", null, false, 31, null, "greater", null, false, 32, null, "less", null, false, 33, null, "range", null, false, 34, null, "boolean", null, false, 35, null, "equal", null, false, 36, null, "greater", null, false, 37, null, "less", null, false, 38, null, "range", null, false, 39, null, "boolean", null, false, 40, null, "equal", null, false, 41, null, "greater", null, false, 42, null, "less", null, false, 43, null, "range", null, false, 44, null, "boolean", null, false, 45, null, "equal", null, false, 46, null, "greater", null, false, 47, null, "less", null, false, 48, null, "range", null, false, 49, null, "aaaaaaaaaaaaaaa", null, false, 50, null ]
+selected = 0
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="All"]
+margin_top = 34.0
+margin_right = 301.0
+margin_bottom = 64.0
+rect_min_size = Vector2( 301, 0 )
+alignment = 1
+
+[node name="Dictionary label" type="Label" parent="All/HBoxContainer2"]
+margin_top = 8.0
+margin_right = 65.0
+margin_bottom = 22.0
+text = "Dictionary"
+
+[node name="Dictionary text" type="TextEdit" parent="All/HBoxContainer2"]
+margin_left = 69.0
+margin_right = 301.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 0, 30 )
+size_flags_horizontal = 3
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="All"]
+margin_top = 68.0
+margin_right = 301.0
+margin_bottom = 98.0
+rect_min_size = Vector2( 301, 0 )
+alignment = 2
+
+[node name="Variable label" type="Label" parent="All/HBoxContainer3"]
+margin_left = 2.0
+margin_top = 8.0
+margin_right = 65.0
+margin_bottom = 22.0
+text = "Variable   "
+
+[node name="Variable text" type="TextEdit" parent="All/HBoxContainer3"]
+margin_left = 69.0
+margin_right = 301.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 232, 30 )
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="All"]
+margin_top = 102.0
+margin_right = 301.0
+margin_bottom = 132.0
+rect_min_size = Vector2( 301, 0 )
+alignment = 2
+
+[node name="Value label" type="Label" parent="All/HBoxContainer4"]
+margin_left = 2.0
+margin_top = 8.0
+margin_right = 65.0
+margin_bottom = 22.0
+text = "Value       "
+
+[node name="Value text" type="TextEdit" parent="All/HBoxContainer4"]
+margin_left = 69.0
+margin_right = 301.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 232, 30 )
+size_flags_vertical = 3
+wrap_enabled = true
+[connection signal="close_request" from="." to="." method="_on_Divert_node_close_request"]
+[connection signal="resize_request" from="." to="." method="_on_Divert_node_resize_request"]
+[connection signal="resized" from="." to="." method="_on_Divert_node_resized"]
+[connection signal="text_changed" from="HBoxContainer/ID text" to="." method="_on_ID_text_text_changed"]
+[connection signal="item_selected" from="All/HBoxContainer/Condition" to="." method="_on_Condition_item_selected"]
+[connection signal="text_changed" from="All/HBoxContainer2/Dictionary text" to="." method="_on_Dictionary_text_text_changed"]
+[connection signal="text_changed" from="All/HBoxContainer3/Variable text" to="." method="_on_Variable_text_text_changed"]
+[connection signal="text_changed" from="All/HBoxContainer4/Value text" to="." method="_on_Value_text_text_changed"]

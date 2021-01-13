@@ -1,3 +1,4 @@
+tool
 extends GraphNode
 
 var node_id = 0
@@ -7,6 +8,7 @@ var Operation = "variable"
 var Name = ""
 var Text = ""
 var slots_count = 4
+var rec_min = 300
 var all_miny = 105
 var Dict = ""
 var Value = []
@@ -14,34 +16,39 @@ var textbar = null
 var textbar2 = null
 var const_size = null
 
-onready var nameList = $"All/Name text"
+onready var nameList = $"All/Name container/Name text"
+onready var parent = self.get_parent().get_parent().get_parent().get_parent()
 
 func _ready():
 	real_id = node_id
+	rect_min_size.y = rec_min
+	rect_size.y = rec_min
 	_on_Add_pressed()
 	const_size = rect_min_size
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	rect_size = const_size
+	if rect_size.y > rec_min:
+		emit_signal("resized")
 #	$TextEdit.rect_size[1] = self.rect_size[1]-50
 
 
-func loading(node):
+func loading(node, id):
+	
+	if str(node["real_id"]) != id:
+		$"All/ID container/ID text".text = id
+	
 	if node.has("name"):
-		for i in range(nameList.get_item_count()):
-			if nameList.get_item_text(i) == node["name"]:
-				nameList.select(i)
-				Name = nameList.get_item_text(i)
-				break
+		$"All/Name text".text = node["name"]
+		Name = node["name"]
 
 	if node.has("content"):
 		$"All/Text text".text = node["content"]
 		Text = node["content"]
 
 	if node.has("dictionary"):
-		$"All/Dictionary text".text = node["dictionary"]
+		$"All/Dictionary container/Dictionary text".text = node["dictionary"]
 		Dict = node["dictionary"]
 
 	textbar.text = node["value"][0][0]
@@ -56,6 +63,7 @@ func loading(node):
 
 
 func _on_Action_node_close_request():
+	parent.changed = true
 	queue_free()
 
 
@@ -64,10 +72,11 @@ func _on_Action_node_resize_request(new_minsize):
 	const_size = new_minsize
 
 func _on_Action_node_resized():
-	$"All".rect_min_size.y = self.get_rect().size.y - all_miny
+	rect_size.y = rec_min
+	rect_size.x = 333
 
 func _on_Add_pressed():
-
+	parent.changed = true
 	all_miny += 60
 	self.rect_min_size[1] += 60
 	Value.append(["",""])
@@ -93,6 +102,7 @@ func _on_Add_pressed():
 
 
 func _on_Remove_pressed():
+	parent.changed = true
 	if slots_count > 5:
 		all_miny -= 60
 		self.rect_min_size[1] -= 60
@@ -100,38 +110,56 @@ func _on_Remove_pressed():
 		slots_count -= 1
 
 func _on_ID_text_text_changed():
+	parent.changed = true
 	node_id = $"All/ID text".text
 
 func _variable_Change(node, slot):
+	parent.changed = true
 	Value[slot][0] = node.text
 
 func _value_Change(node, slot):
+	parent.changed = true
 	Value[slot][1] = node.text
 
 func _on_Name_text_text_changed():
+	parent.changed = true
 	Name = $"All/Name text".text
 
 func _on_Text_text_text_changed():
+	parent.changed = true
 	Text = $"All/Text text".text
 	
 func _on_Dictionary_text_text_changed():
-	Dict = $"All/Dictionary text".text
+	parent.changed = true
+	Dict = $"All/Dictionary container/Dictionary text".text
 
-
-
-func _on_First_checkbox_pressed():
-	if $"Firstrepeat/First/First checkbox".pressed == true:
-		$"Firstrepeat/Repeat/Repeat checkbox".pressed = false
-		node_id = "first"
+func _first_Flagged():
+	if typeof(node_id) == TYPE_STRING:
+		if node_id == "first":
+			node_id = real_id
+			$"First flag".visible = false
+		else:
+			$"Repeat flag".visible = false
+			node_id = "first"
+			$"First flag".visible = true
 	else:
-		node_id = real_id
+		if typeof(node_id) == TYPE_INT:
+			node_id = "first"
+			$"First flag".visible = true
 
-func _on_Repeat_checkBox_pressed():
-	if $"Firstrepeat/Repeat/Repeat checkbox".pressed == true:
-		$"Firstrepeat/First/First checkbox".pressed = false
-		node_id = "repeat"
+func _repeat_Flagged():
+	if typeof(node_id) == TYPE_STRING:
+		if node_id == "repeat":
+			node_id = real_id
+			$"Repeat flag".visible = false
+		else:
+			$"First flag".visible = false
+			node_id = "repeat"
+			$"Repeat flag".visible = true
 	else:
-		node_id = real_id
+		if typeof(node_id) == TYPE_INT:
+			node_id = "repeat"
+			$"Repeat flag".visible = true
 
 func _add_name(name):
 	nameList.add_item(name)

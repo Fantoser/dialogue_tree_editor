@@ -22,6 +22,9 @@ slot/0/right_enabled = true
 slot/0/right_type = 0
 slot/0/right_color = Color( 1, 1, 1, 1 )
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="HSplitContainer" type="HBoxContainer" parent="."]
 margin_left = 16.0
@@ -39,7 +42,6 @@ margin_right = 216.0
 margin_bottom = 24.0
 
 [node name="First" type="HBoxContainer" parent="HSplitContainer/VBoxContainer/Firstrepeat"]
-editor/display_folded = true
 margin_right = 106.0
 margin_bottom = 24.0
 size_flags_horizontal = 3
@@ -58,7 +60,6 @@ focus_mode = 0
 enabled_focus_mode = 0
 
 [node name="Repeat" type="HBoxContainer" parent="HSplitContainer/VBoxContainer/Firstrepeat"]
-editor/display_folded = true
 margin_left = 110.0
 margin_right = 216.0
 margin_bottom = 24.0

@@ -90,9 +90,9 @@ enabled_focus_mode = 0
 
 [node name="All" type="VBoxContainer" parent="."]
 margin_left = 16.0
-margin_top = 48.0
+margin_top = 49.0
 margin_right = 259.0
-margin_bottom = 260.0
+margin_bottom = 261.0
 
 [node name="Separator" type="HSeparator" parent="All"]
 margin_right = 243.0
@@ -152,16 +152,15 @@ wrap_enabled = true
 [node name="HSeparator" type="HSeparator" parent="."]
 visible = false
 margin_left = 16.0
-margin_top = 261.0
+margin_top = 262.0
 margin_right = 259.0
-margin_bottom = 265.0
+margin_bottom = 266.0
 
 [node name="Button container" type="HBoxContainer" parent="."]
-editor/display_folded = true
 margin_left = 16.0
-margin_top = 266.0
+margin_top = 267.0
 margin_right = 259.0
-margin_bottom = 291.07
+margin_bottom = 292.07
 rect_min_size = Vector2( 0, 25.07 )
 
 [node name="Remove" type="Button" parent="Button container"]
@@ -180,9 +179,9 @@ text = "+"
 [node name="HSeparator2" type="HSeparator" parent="."]
 visible = false
 margin_left = 16.0
-margin_top = 292.0
+margin_top = 293.0
 margin_right = 259.0
-margin_bottom = 296.0
+margin_bottom = 297.0
 [connection signal="close_request" from="." to="." method="_on_Action_node_close_request"]
 [connection signal="resize_request" from="." to="." method="_on_Action_node_resize_request"]
 [connection signal="resized" from="." to="." method="_on_Action_node_resized"]
